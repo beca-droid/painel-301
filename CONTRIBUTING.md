@@ -85,6 +85,10 @@ features/equipe-NN/feature.js
 features/equipe-NN/style.css
 ```
 
+> ⚠️ **`NN` é o número da SUA equipe (01 a 10), definido pelo professor — não é o número da
+> issue.** Se você é da equipe 03 e pegou a issue #8, a sua pasta continua sendo
+> `features/equipe-03/`.
+
 Para ver o site, abra o `index.html` no navegador (clique duas vezes no arquivo).
 
 > Se você alterar qualquer arquivo fora da sua pasta, o pull request será recusado.
