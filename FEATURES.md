@@ -6,6 +6,10 @@ abra a *issue* correspondente no GitHub e comente `eu quero` — a primeira equi
 > As features são propositalmente pequenas. O foco da atividade é o **fluxo do GitHub**,
 > não a complexidade do código. Se sobrar tempo, melhore o visual ou acrescente um extra.
 
+> ⚠️ **O número da equipe não é o número da issue.** O professor define qual é a sua equipe
+> (de 01 a 10) e é esse número que você usa na pasta `features/equipe-NN/`. A equipe 03 pode
+> perfeitamente pegar a issue #8.
+
 Todas mexem apenas em `features/equipe-NN/feature.js` e `features/equipe-NN/style.css`.
 
 ---

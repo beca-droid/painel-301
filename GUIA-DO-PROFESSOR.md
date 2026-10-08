@@ -96,7 +96,7 @@ Como fica na prática:
 | Tempo | O quê |
 |---|---|
 | 0–8 | Abrir o site no ar e mostrar o painel vazio. Explicar: *"no fim, cada card aqui é de uma equipe de vocês"*. Formar duplas/trios. |
-| 8–13 | Cada equipe escolhe a feature e comenta `eu quero` na issue. Você atribui ali mesmo. **Diga em voz alta que as issues só existem no seu repositório** — o instinto deles será procurar no próprio fork, onde a aba nem aparece. |
+| 8–13 | **Diga o número de cada equipe em voz alta e anote** — é ele que define a pasta, e não o número da issue (já confundiram). Cada equipe escolhe a feature e comenta `eu quero` na issue. Você atribui ali mesmo. **Diga em voz alta que as issues só existem no seu repositório** — o instinto deles será procurar no próprio fork, onde a aba nem aparece. |
 | 13–25 | **Fork → clone → branch.** Momento mais crítico. Circule pela sala. |
 | 25–38 | Abrir `features/equipe-NN/feature.js`, rodar o site, trocar nome da equipe e título. Fazer o **primeiro commit e push**. |
 | 38–45 | **Abrir o Pull Request como rascunho (draft).** Fechar a aula com todos os PRs visíveis na sua tela, projetados. |
@@ -165,6 +165,8 @@ Comente **na linha**, não só no geral — é o que ensina o recurso.
 | "This branch has conflicts" | Raro aqui (arquivos separados), mas pode ocorrer na `main` do fork | Equipe sincroniza o fork (Etapa 10 do CONTRIBUTING) |
 | Push recusado após sincronizar | Histórico divergiu | `git pull --rebase` e depois `git push` |
 | PR sem nenhum check | Workflow de fork esperando aprovação | Clicar em *Approve and run workflows* no PR |
+| Equipe sem pasta própria | Confundiu número da equipe com número da issue | Conferir a atribuição; as pastas vão de `equipe-01` a `equipe-10` |
+| Issue não fechou após o merge | PR sem a linha `Resolve #N` | Fechar a issue na mão e cobrar o vínculo na próxima revisão |
 | Aluno mexeu na `main` | Esqueceu a branch | `git stash` → `git checkout -b equipe-NN/x` → `git stash pop` |
 | Card não aparece no site | Erro de JavaScript | F12 → Console. O motor isola o erro: só aquele card quebra. |
 | Dois cards se atrapalham | `id` repetido entre equipes | Renomear com o sufixo da equipe |
