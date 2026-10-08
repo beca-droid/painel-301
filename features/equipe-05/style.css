@@ -10,5 +10,5 @@
 
 /* Exemplo: deixa o visor da equipe 05 com outra cor. */
 #card-equipe-05 .visor {
-  color: var(--sucesso);
+  color:rgb(217, 179, 253);
 }
