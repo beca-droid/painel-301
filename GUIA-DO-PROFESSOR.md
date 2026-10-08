@@ -11,9 +11,9 @@ transparência total — não há gabarito aqui, só logística).
 
 - [ ] Publicar este repositório como **público** (fork exige repo visível).
 - [ ] **Settings → Pages →** Source: `Deploy from a branch`, branch `main`, pasta `/ (root)`.
-- [x] ~~**Settings → Branches** — proteção da `main`~~ **já ativada.** A regra exige
-      pull request com 1 aprovação e o CI verde antes do merge; bloqueia force-push e
-      exclusão da branch. Você, como admin, pode contornar em caso de emergência.
+- [x] ~~**Settings → Branches** — proteção da `main`~~ **já ativada.** Exige pull request
+      com 1 aprovação, bloqueia force-push e exclusão da branch. O CI **não** trava o
+      merge (veja a seção abaixo). Você, como admin, pode contornar se precisar.
 - [ ] Criar as **9 issues** (uma por feature). Há um script pronto na seção 6.
 - [ ] Criar as labels: `feature`, `equipe-01`…`equipe-09`, `precisa-ajuste`, `aprovado`.
 
@@ -56,12 +56,40 @@ Dois atalhos do VS Code que valem mostrar na aula 1, porque poupam terminal:
 O `CONTRIBUTING.md` traz os comandos de terminal **e** o caminho pelo VS Code, lado a lado.
 Deixe o aluno usar o que preferir — o conceito é o mesmo.
 
-## 2. Material de apoio para projetar
+## 2. O CI em pull request vindo de fork — leia antes da aula 2
+
+O GitHub **não roda o workflow automaticamente** quando alguém abre o primeiro pull request
+a partir de um fork. Ele fica parado, com um aviso amarelo no PR:
+
+> *First-time contributors need a maintainer to approve running workflows.*
+
+Você resolve clicando em **Approve and run workflows**, dentro do próprio PR. É uma trava de
+segurança do GitHub, não um erro do projeto — qualquer repositório público se comporta assim.
+Não existe como desligar: a configuração mais permissiva ainda exige aprovação para contas
+novas no GitHub, que é o caso da maioria dos alunos.
+
+**Por isso o CI não é check obrigatório.** Se fosse, um PR com o workflow parado ficaria com
+o botão de merge desabilitado — e você teria 9 pull requests travados sem motivo aparente,
+no meio da aula.
+
+Como fica na prática:
+
+| O que você vê no PR | O que significa | O que fazer |
+|---|---|---|
+| Aviso amarelo de aprovação | Primeiro PR daquele aluno | Clicar em *Approve and run workflows* |
+| ✅ check verde | Passou na verificação | Seguir com a revisão |
+| ❌ check vermelho | Mexeu em arquivo da base, ou erro de sintaxe | Abrir o log e pedir o ajuste |
+| Nenhum check | Workflow não foi aprovado ainda | Aprovar, ou simplesmente revisar sem ele |
+
+> 💡 Se a aula estiver no fim e o CI não tiver rodado, **pode mergear assim mesmo**. A
+> verificação é um apoio, não um portão. Você já olhou o diff na revisão.
+
+## 3. Material de apoio para projetar
 
 - **[Diagrama do ciclo](https://euclidespaim.github.io/painel-301/ciclo.html)** — abra em tela
   cheia na aula 1 e volte a ele no começo das aulas 2 e 3, apontando em que etapa a turma está.
 
-## 3. Plano das 3 aulas (45 min cada)
+## 4. Plano das 3 aulas (45 min cada)
 
 ### Aula 1 — Do fork ao primeiro pull request
 
@@ -100,7 +128,7 @@ Deixe o aluno usar o que preferir — o conceito é o mesmo.
 
 ---
 
-## 4. Rotina de revisão dos pull requests
+## 5. Rotina de revisão dos pull requests
 
 Abra **Files changed** e confira nesta ordem:
 
@@ -128,7 +156,7 @@ Comente **na linha**, não só no geral — é o que ensina o recurso.
 
 ---
 
-## 5. Problemas que vão aparecer
+## 6. Problemas que vão aparecer
 
 | Sintoma | Causa | Solução |
 |---|---|---|
@@ -136,13 +164,14 @@ Comente **na linha**, não só no geral — é o que ensina o recurso.
 | PR aponta para o repo errado | Base errada no formulário | Fechar e abrir de novo, conferindo a seta |
 | "This branch has conflicts" | Raro aqui (arquivos separados), mas pode ocorrer na `main` do fork | Equipe sincroniza o fork (Etapa 10 do CONTRIBUTING) |
 | Push recusado após sincronizar | Histórico divergiu | `git pull --rebase` e depois `git push` |
+| PR sem nenhum check | Workflow de fork esperando aprovação | Clicar em *Approve and run workflows* no PR |
 | Aluno mexeu na `main` | Esqueceu a branch | `git stash` → `git checkout -b equipe-NN/x` → `git stash pop` |
 | Card não aparece no site | Erro de JavaScript | F12 → Console. O motor isola o erro: só aquele card quebra. |
 | Dois cards se atrapalham | `id` repetido entre equipes | Renomear com o sufixo da equipe |
 
 ---
 
-## 6. Avaliação sugerida
+## 7. Avaliação sugerida
 
 A nota vem do **processo**, não do tamanho do código.
 
@@ -159,7 +188,7 @@ A nota vem do **processo**, não do tamanho do código.
 
 ---
 
-## 7. Script para criar as issues (já executado)
+## 8. Script para criar as issues (já executado)
 
 Com o [GitHub CLI](https://cli.github.com/) autenticado, rode na pasta do repositório:
 
@@ -182,7 +211,7 @@ criar "Busca de Pokémon"           "Busca na PokeAPI e mostra imagem e tipo. �
 
 ---
 
-## 8. Comandos úteis durante as aulas
+## 9. Comandos úteis durante as aulas
 
 ```bash
 gh pr list                      # todos os PRs abertos
